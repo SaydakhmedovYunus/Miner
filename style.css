@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--white);
+}
+:root {
+    --purple: #1d2039;
+    --light-purple: #232947;
+    --lighter-purple: #797e9a;
+    --green: #66a663;
+    --white: #fff;
+    --orange: #dbac36;
+}
+body {
+    background-color: var(--purple);
+    margin: 20px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: var(--light-purple);
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.8s ease-out;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+header:hover {
+    background-color: rgba(0, 212, 255, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+#logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 212, 255, 0.8);
+}
+
+header span, header h1, header h2, header h3 {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    animation: fadeIn 1s ease;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 16px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.gameArea {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-purple);
+    padding: 20px;
+    border-radius: 20px;
+    flex-grow: 1000;
+    flex-wrap: wrap;
+}
+.gameField {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    gap: 6px;
+}
+.field {
+    background-color: var(--purple);
+    width: 100%;
+    height: 30px;
+    border-radius: 4px;
+    font-size: 25px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+}
+.field.active {
+    background-color: var(--lighter-purple);
+}
+.field.flag {
+    background-image: url(./images/flag-in-hole.png);
+    background-position: center;
+    background-size: contain;
+    background-color: var(--green);
+}
+.field.bomb {
+    background-color: orange;
+    background-image: url(./images/bomb.png);
+    background-position: center;
+    background-size: contain;
+}
+.gameSetting {
+    width: 400px;
+    background-color: var(--light-purple);
+    padding: 40px 20px;
+    border-radius: 20px;
+    flex-grow: 1;
+    flex-basis: 500px;
+}
+.gameSetting h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.scoup {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 30px;
+    margin-bottom: 30px;
+}
+
+.point {
+    font-size: 21px;
+    padding: 8px 0;
+    background-color: var(--purple);
+    flex-basis: 180px;
+    text-align: center;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.point.active {
+    background-color: var(--orange);
+}
+
+#gameBtn {
+    background-color: var(--green);
+    color:var(--white);
+    text-align: center;
+    padding: 12px;
+    font-size: 24px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+#loginWrapper {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(159,159,184,0.26934523809523814) 35%, rgba(0,212,255,1) 100%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+#loginWrapper h3 {
+    font-size: 26px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: white;
+    animation: slideDown 1s ease-out;
+}
+
+#loginWrapper input {
+    margin-top: 35px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 22px;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#loginWrapper input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+}
+
+#loginWrapper input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Добавление анимации при наведении на input */
+#loginWrapper input:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.9);
+}
